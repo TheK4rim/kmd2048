@@ -24,7 +24,7 @@ produce or check any value in this project.
 | `test_kmd2048.py` | 71 `unittest` tests: published NIST/Keccak-team vectors, independent reference implementations, file hashing |
 | `benchmark.py` | `time.perf_counter()` benchmarks of every primitive and of KMD-2048 |
 | `README.md` | This document |
-| `.github/workflows/tests.yml` | GitHub Actions: test suite, benchmark smoke run and CLI check on CPython 3.9–3.14 |
+| `.github/workflows/tests.yml` | GitHub Actions: test suite, benchmark smoke run and CLI check on CPython 3.8–3.14 |
 
 ## Contents
 
@@ -310,9 +310,10 @@ audits the `import` statements of all three Python files and fails if any
 other module, such as `hashlib`, appears.
 
 **Continuous integration.** GitHub Actions runs the suite, a quick
-benchmark and the command-line tool on CPython 3.9–3.14 for every push to
-`main` and every pull request. Python 3.8 has reached end of life and is
-tested only locally.
+benchmark and the command-line tool on CPython 3.8–3.14 for every push to
+`main` and every pull request. The end-of-life versions 3.8 and 3.9 run on
+Ubuntu 24.04, because `actions/setup-python` no longer provides them for
+newer runner images.
 
 ### Where the expected values come from
 
