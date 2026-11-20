@@ -1,5 +1,10 @@
 # KMD-2048: an experimental hash construction in pure Python
 
+[![tests](https://github.com/TheK4rim/kmd2048/actions/workflows/tests.yml/badge.svg)](https://github.com/TheK4rim/kmd2048/actions/workflows/tests.yml)
+![Python 3.8+](https://img.shields.io/badge/python-3.8%2B-blue)
+![dependencies: none](https://img.shields.io/badge/dependencies-none-brightgreen)
+![status: experimental](https://img.shields.io/badge/status-experimental-orange)
+
 > **Warning.** KMD-2048 is an experimental construction that has **not been
 > independently reviewed**. It is **not more secure than SHA-512, SHA3-512 or
 > SHAKE256**; its realistic security level is at most about 256 bits, the same
@@ -19,6 +24,7 @@ produce or check any value in this project.
 | `test_kmd2048.py` | 71 `unittest` tests: published NIST/Keccak-team vectors, independent reference implementations, file hashing |
 | `benchmark.py` | `time.perf_counter()` benchmarks of every primitive and of KMD-2048 |
 | `README.md` | This document |
+| `.github/workflows/tests.yml` | GitHub Actions: test suite, benchmark smoke run and CLI check on CPython 3.9–3.14 |
 
 ## Contents
 
@@ -302,6 +308,11 @@ deliberately avoids `tempfile`, `random`, `math` and `io`, so it relies on
 nothing beyond the modules allowed for this project. One test statically
 audits the `import` statements of all three Python files and fails if any
 other module, such as `hashlib`, appears.
+
+**Continuous integration.** GitHub Actions runs the suite, a quick
+benchmark and the command-line tool on CPython 3.9–3.14 for every push to
+`main` and every pull request. Python 3.8 has reached end of life and is
+tested only locally.
 
 ### Where the expected values come from
 
